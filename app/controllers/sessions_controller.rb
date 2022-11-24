@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-      user = User.find_by(username: user_params[:username]).try(:authenticate, user_params[:password])
-      if user
-        render plain: sprintf("welcome, %s!", user.username)
+      @user = User.find_by(username: user_params[:username], password: user_params[:password])
+      if @user
+        redirect_to :sessions
       else
-        redirect_to :sessions_new
+        redirect_to :sessions_new, alert: '用户名或密码错误'
       end
    end
    
