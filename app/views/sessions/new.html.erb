@@ -1,0 +1,18 @@
+<h1>登录</h1>
+
+<%= form_for :session, url: :sessions_create do |f| %>
+ 
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+ 
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+ 
+  <p><%= f.button "登录" %></p>
+<%= link_to '注册', applicants_new_path %>
+ 
+<% end %>
